@@ -1,0 +1,2 @@
+# Softwaretests_14_05_2020
+Codebeispiele zum Kurs: http://ppedv.de/schulung/kurse/TestDrivenDevelopment_TDD_UnitTests_Patterns_VisualStudio2010_ContinuousIntegration_PEX_Mocking.aspx
