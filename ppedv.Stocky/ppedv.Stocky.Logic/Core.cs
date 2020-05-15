@@ -2,6 +2,9 @@
 using ppedv.Stocky.Model.Contracts;
 using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("ppedv.Stocky.Logic.Tests")]
 
 namespace ppedv.Stocky.Logic
 {
@@ -14,11 +17,12 @@ namespace ppedv.Stocky.Logic
             return Repository.GetAll<Stock>().OrderByDescending(x => x.Sections.SelectMany(y => y.Storages).Sum(y => y.Menge)).FirstOrDefault();
         }
 
-        public void IfFreitagNachMittagAddEnde(DateTime dt)
+        internal void IfFreitagNachMittagAddEnde(DateTime dt)
         {
             if (dt.DayOfWeek == DayOfWeek.Friday && dt.Hour > 16)
             {
                 Repository.Add(new Bulk() { Type = "Ende" });
+                //Repository.Add(new Stock() { Name = "Ende" });
                 Repository.SaveAll();
             }
         }

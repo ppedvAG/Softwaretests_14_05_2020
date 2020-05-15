@@ -55,5 +55,33 @@ namespace ppedv.Stocky.Logic.Tests
 
         }
 
+
+
+        [Test]
+        public void Core_IfFreitagNachMittagAddEnde_do_add_on_a_friday_evening()
+        {
+            var mock = new Mock<IRepository>();
+            var core = new Core(mock.Object);
+
+            core.IfFreitagNachMittagAddEnde(new DateTime(2020, 5, 15, 17, 0, 0));
+
+            mock.Verify(x => x.SaveAll(), Times.Once);
+            mock.Verify(x => x.Add(It.IsAny<Bulk>()), Times.Once);
+            mock.Verify(x => x.Add(It.Is<Bulk>(x=>x.Type =="Ende")), Times.Once);
+
+        }
+
+
+        [Test]
+        public void Core_IfFreitagNachMittagAddEnde_do_NOT_add_on_a_monday_morning()
+        {
+            var mock = new Mock<IRepository>();
+            var core = new Core(mock.Object);
+
+            core.IfFreitagNachMittagAddEnde(new DateTime(2020, 5, 18, 10, 0, 0));
+
+            mock.Verify(x => x.SaveAll(), Times.Never);
+            mock.Verify(x => x.Add(It.IsAny<Bulk>()), Times.Never);
+        }
     }
 }
