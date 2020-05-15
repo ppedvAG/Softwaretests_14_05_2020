@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Model", "ppedv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Data.EFCore", "ppedv.Stocky.Data.EFCore\ppedv.Stocky.Data.EFCore.csproj", "{B7B52139-7DA7-43C3-ABA5-F4C7F854F587}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Data.EFCore.Tests", "ppedv.Stocky.Data.EFCore.Tests\ppedv.Stocky.Data.EFCore.Tests.csproj", "{0B4EE70E-46A5-4599-B13D-815063D3C5EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B7B52139-7DA7-43C3-ABA5-F4C7F854F587}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7B52139-7DA7-43C3-ABA5-F4C7F854F587}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7B52139-7DA7-43C3-ABA5-F4C7F854F587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
