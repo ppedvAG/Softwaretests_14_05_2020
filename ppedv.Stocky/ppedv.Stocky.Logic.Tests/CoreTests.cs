@@ -67,7 +67,7 @@ namespace ppedv.Stocky.Logic.Tests
 
             mock.Verify(x => x.SaveAll(), Times.Once);
             mock.Verify(x => x.Add(It.IsAny<Bulk>()), Times.Once);
-            mock.Verify(x => x.Add(It.Is<Bulk>(x=>x.Type =="Ende")), Times.Once);
+            mock.Verify(x => x.Add(It.Is<Bulk>(x => x.Type == "Ende")), Times.Once);
 
         }
 
