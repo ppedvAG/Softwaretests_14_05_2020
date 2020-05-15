@@ -7,12 +7,12 @@ using Xunit;
 
 namespace ppedv.Stocky.Data.EFCore.Tests
 {
-    public class EfContextTests
+    public class EfCoreContextTests
     {
         [Fact]
         public void Can_create_DB()
         {
-            var con = new EfContext();
+            var con = new EfCoreContext();
 
             con.Database.EnsureDeleted();
 
@@ -28,14 +28,14 @@ namespace ppedv.Stocky.Data.EFCore.Tests
             var newName = $"UpdateStock_{Guid.NewGuid()}";
 
             //CREATE
-            using (var con = new EfContext())
+            using (var con = new EfCoreContext())
             {
                 con.Stocks.Add(stock);
                 con.SaveChanges();
             }
 
             //READ
-            using (var con = new EfContext())
+            using (var con = new EfCoreContext())
             {
                 var loaded = con.Stocks.Find(stock.Id);
                 Assert.NotNull(loaded);
@@ -47,7 +47,7 @@ namespace ppedv.Stocky.Data.EFCore.Tests
             }
 
             //check UPDATE
-            using (var con = new EfContext())
+            using (var con = new EfCoreContext())
             {
                 var loaded = con.Stocks.Find(stock.Id);
                 Assert.Equal(newName, loaded.Name);
@@ -58,7 +58,7 @@ namespace ppedv.Stocky.Data.EFCore.Tests
             }
 
             //check DELETE
-            using (var con = new EfContext())
+            using (var con = new EfCoreContext())
             {
                 var loaded = con.Stocks.Find(stock.Id);
                 Assert.Null(loaded);
@@ -70,13 +70,19 @@ namespace ppedv.Stocky.Data.EFCore.Tests
         public void can_create_read_testdata_with_autofixture()
         {
             var fix = new Fixture();
+
+            fix.Customize<Stock>(x => x.Without(y => y.Id));
+            fix.Customize<Storage>(x => x.Without(y => y.Id));
+            fix.Customize<Bulk>(x => x.Without(y => y.Id));
+            fix.Customize<Section>(x => x.Without(y => y.Id));
+
             
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
-            
 
-            var stock = fix.Build<Stock>().Without(x => x.Id).Create<Stock>();
+            var stock = fix.Create<Stock>();
 
-            using (var con = new EfContext())
+
+            using (var con = new EfCoreContext())
             {
                 con.Stocks.Add(stock);
                 con.SaveChanges();

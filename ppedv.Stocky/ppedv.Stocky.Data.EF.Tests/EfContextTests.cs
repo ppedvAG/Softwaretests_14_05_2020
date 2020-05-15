@@ -70,9 +70,15 @@ namespace ppedv.Stocky.Data.EF.Tests
         {
             var fix = new Fixture();
 
+            fix.Customize<Stock>(x => x.Without(y => y.Id));
+            fix.Customize<Storage>(x => x.Without(y => y.Id));
+            fix.Customize<Bulk>(x => x.Without(y => y.Id));
+            fix.Customize<Section>(x => x.Without(y => y.Id));
+
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
 
             var stock = fix.Build<Stock>().Create<Stock>();
+
 
             using (var con = new EfContext())
             {
