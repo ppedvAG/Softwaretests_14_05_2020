@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ppedv.Stocky.Model;
-using System;
+
 
 namespace ppedv.Stocky.Data.EFCore
 {
@@ -14,7 +14,8 @@ namespace ppedv.Stocky.Data.EFCore
         public EfContext(string conString) : base(new DbContextOptionsBuilder().UseSqlServer(conString).Options)
         { }
 
-        public EfContext() : this("Server=(localdb)\\mssqllocaldb;Database=Stocky_dev;Trusted_Connection=true")
+        public EfContext() : this("Server=(localdb)\\mssqllocaldb;Database=Stocky_dev_CORE;Trusted_Connection=true")
         { }
+
     }
 }

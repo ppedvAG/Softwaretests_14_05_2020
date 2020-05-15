@@ -1,11 +1,9 @@
 using AutoFixture;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using ppedv.Stocky.Model;
 using System;
 using Xunit;
 
-namespace ppedv.Stocky.Data.EFCore.Tests
+namespace ppedv.Stocky.Data.EF.Tests
 {
     public class EfContextTests
     {
@@ -14,11 +12,12 @@ namespace ppedv.Stocky.Data.EFCore.Tests
         {
             var con = new EfContext();
 
-            con.Database.EnsureDeleted();
+            if (con.Database.Exists())
+                con.Database.Delete();
 
-            Assert.True(con.Database.EnsureCreated());
+            con.Database.Create();
 
-            Assert.True((con.Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists());
+            Assert.True(con.Database.Exists());
         }
 
         [Fact]
@@ -70,19 +69,18 @@ namespace ppedv.Stocky.Data.EFCore.Tests
         public void can_create_read_testdata_with_autofixture()
         {
             var fix = new Fixture();
-            
-            fix.Behaviors.Add(new OmitOnRecursionBehavior());
-            
 
-            var stock = fix.Build<Stock>().Without(x => x.Id).Create<Stock>();
+            fix.Behaviors.Add(new OmitOnRecursionBehavior());
+
+            var stock = fix.Build<Stock>().Create<Stock>();
 
             using (var con = new EfContext())
             {
                 con.Stocks.Add(stock);
                 con.SaveChanges();
             }
+
+
         }
-
-
     }
 }

@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Model", "ppedv.Stocky.Model\ppedv.Stocky.Model.csproj", "{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.Stocky.Model", "ppedv.Stocky.Model\ppedv.Stocky.Model.csproj", "{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Data.EFCore", "ppedv.Stocky.Data.EFCore\ppedv.Stocky.Data.EFCore.csproj", "{B7B52139-7DA7-43C3-ABA5-F4C7F854F587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.Stocky.Data.EFCore", "ppedv.Stocky.Data.EFCore\ppedv.Stocky.Data.EFCore.csproj", "{B7B52139-7DA7-43C3-ABA5-F4C7F854F587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Data.EFCore.Tests", "ppedv.Stocky.Data.EFCore.Tests\ppedv.Stocky.Data.EFCore.Tests.csproj", "{0B4EE70E-46A5-4599-B13D-815063D3C5EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.Stocky.Data.EFCore.Tests", "ppedv.Stocky.Data.EFCore.Tests\ppedv.Stocky.Data.EFCore.Tests.csproj", "{0B4EE70E-46A5-4599-B13D-815063D3C5EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Data.EF", "ppedv.Stocky.Data.EF\ppedv.Stocky.Data.EF.csproj", "{0AC65952-DEE4-4FD5-8A71-F7FBE2800F01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Data.EF.Tests", "ppedv.Stocky.Data.EF.Tests\ppedv.Stocky.Data.EF.Tests.csproj", "{8263B085-E5F0-4761-8192-AAB482175D1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B4EE70E-46A5-4599-B13D-815063D3C5EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC65952-DEE4-4FD5-8A71-F7FBE2800F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC65952-DEE4-4FD5-8A71-F7FBE2800F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC65952-DEE4-4FD5-8A71-F7FBE2800F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC65952-DEE4-4FD5-8A71-F7FBE2800F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8263B085-E5F0-4761-8192-AAB482175D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8263B085-E5F0-4761-8192-AAB482175D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8263B085-E5F0-4761-8192-AAB482175D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8263B085-E5F0-4761-8192-AAB482175D1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoFixture" Version="4.11.0" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
@@ -15,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ppedv.Stocky.Data.EFCore\ppedv.Stocky.Data.EFCore.csproj" />
+    <ProjectReference Include="..\ppedv.Stocky.Data.EF\ppedv.Stocky.Data.EF.csproj" />
     <ProjectReference Include="..\ppedv.Stocky.Model\ppedv.Stocky.Model.csproj" />
   </ItemGroup>
 
