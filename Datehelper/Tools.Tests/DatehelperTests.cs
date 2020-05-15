@@ -48,15 +48,15 @@ namespace Tools.Tests
         [TestMethod]
         public void DateHelper_Dummes_Tests_POSE()
         {
-            var dh = new Datehelper();
-            PoseContext.Isolate(() =>
-            {
-                Shim consoleShim = Shim.Replace(() => File.ReadAllText(Is.A<string>())).With(
-    delegate (string s) { return "LALALAA"; });
+    //        var dh = new Datehelper();
+    //        PoseContext.Isolate(() =>
+    //        {
+    //            Shim consoleShim = Shim.Replace(() => File.ReadAllText(Is.A<string>())).With(
+    //delegate (string s) { return "LALALAA"; });
 
 
-                dh.DummesZeug();
-            });
+    //            dh.DummesZeug();
+    //        });
 
         }
     }

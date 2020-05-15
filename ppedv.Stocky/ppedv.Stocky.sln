@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.Stocky.Model", "ppedv.Stocky.Model\ppedv.Stocky.Model.csproj", "{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353E2415-0C1B-4D8B-8EB1-7C94A8C2DAAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F21BEA8-E614-4DEC-A8F5-DDED27D2905B}
+	EndGlobalSection
+EndGlobal
