@@ -1,8 +1,11 @@
 using AutoFixture;
+using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using ppedv.Stocky.Model;
 using System;
+using System.Linq;
 using Xunit;
 
 namespace ppedv.Stocky.Data.EFCore.Tests
@@ -76,7 +79,7 @@ namespace ppedv.Stocky.Data.EFCore.Tests
             fix.Customize<Bulk>(x => x.Without(y => y.Id));
             fix.Customize<Section>(x => x.Without(y => y.Id));
 
-            
+
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
 
             var stock = fix.Create<Stock>();
@@ -87,6 +90,24 @@ namespace ppedv.Stocky.Data.EFCore.Tests
                 con.Stocks.Add(stock);
                 con.SaveChanges();
             }
+
+            //test mit LazyLoading
+            using (var con = new EfCoreContext())
+            {
+                var loaded = con.Stocks.Find(stock.Id);
+                loaded.Should().BeEquivalentTo(stock, x => x.IgnoringCyclicReferences());
+            }
+
+            //Stock loadedOhneLL;
+            //using (var con = new EfCoreContext())
+            //{
+
+            //    loadedOhneLL = con.Stocks.Include(x => x.Sections)
+            //                             .ThenInclude(x => x.Storages)
+            //                             .ThenInclude(x => x.Bulk)
+            //                             .FirstOrDefault(x => x.Id == stock.Id);
+            //}
+            //loadedOhneLL.Should().BeEquivalentTo(stock, x => x.IgnoringCyclicReferences());
         }
 
 

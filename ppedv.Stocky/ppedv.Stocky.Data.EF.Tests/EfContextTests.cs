@@ -1,7 +1,10 @@
 using AutoFixture;
+using FluentAssertions;
 using ppedv.Stocky.Model;
 using System;
 using Xunit;
+using System.Data.Entity;
+using System.Linq;
 
 namespace ppedv.Stocky.Data.EF.Tests
 {
@@ -70,15 +73,14 @@ namespace ppedv.Stocky.Data.EF.Tests
         {
             var fix = new Fixture();
 
-            fix.Customize<Stock>(x => x.Without(y => y.Id));
-            fix.Customize<Storage>(x => x.Without(y => y.Id));
-            fix.Customize<Bulk>(x => x.Without(y => y.Id));
-            fix.Customize<Section>(x => x.Without(y => y.Id));
+            //fix.Customize<Stock>(x => x.Without(y => y.Id));
+            //fix.Customize<Storage>(x => x.Without(y => y.Id));
+            //fix.Customize<Bulk>(x => x.Without(y => y.Id));
+            //fix.Customize<Section>(x => x.Without(y => y.Id));
 
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
 
             var stock = fix.Build<Stock>().Create<Stock>();
-
 
             using (var con = new EfContext())
             {
@@ -86,7 +88,22 @@ namespace ppedv.Stocky.Data.EF.Tests
                 con.SaveChanges();
             }
 
+            using (var con = new EfContext())
+            {
+                var loaded = con.Stocks.Find(stock.Id);
+                loaded.Should().BeEquivalentTo(stock, x => x.IgnoringCyclicReferences());
+            }
 
+
+            //Stock loadedOhneLL;
+            //using (var con = new EfContext())
+            //{
+
+            //    loadedOhneLL = con.Stocks.Include(x => x.Sections)
+            //                             .Include(x => x.Sections.Select(y => y.Storages))
+            //                             .FirstOrDefault(x => x.Id == stock.Id);
+            //}
+            //loadedOhneLL.Should().BeEquivalentTo(stock, x => x.IgnoringCyclicReferences());
         }
     }
 }
