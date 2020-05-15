@@ -11,7 +11,16 @@ namespace ppedv.Stocky.Logic
 
         public Stock GetStockWithMostBulk()
         {
-            return Repository.GetAll<Stock>().OrderBy(x => x.Sections.SelectMany(y => y.Storages).Sum(y => y.Menge)).FirstOrDefault();
+            return Repository.GetAll<Stock>().OrderByDescending(x => x.Sections.SelectMany(y => y.Storages).Sum(y => y.Menge)).FirstOrDefault();
+        }
+
+        public void IfFreitagNachMittagAddEnde(DateTime dt)
+        {
+            if (dt.DayOfWeek == DayOfWeek.Friday && dt.Hour > 16)
+            {
+                Repository.Add(new Bulk() { Type = "Ende" });
+                Repository.SaveAll();
+            }
         }
 
 
